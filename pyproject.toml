@@ -1,0 +1,12 @@
+[project]
+name = "gemma4-serving"
+version = "0.1.0"
+requires-python = ">=3.12"
+
+dependencies = [
+    "openai",
+    "python-dotenv",
+    "pillow",
+    "pymupdf",
+    "httpx",
+]
