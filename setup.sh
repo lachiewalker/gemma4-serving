@@ -24,6 +24,13 @@ uv pip install -U vllm --pre \
 # Client and utility dependencies
 uv pip install openai python-dotenv pillow pymupdf
 
+# Download the Gemma 4 tool+reasoning chat template from the vLLM repo
+mkdir -p chat_templates
+curl -fsSL \
+    "https://raw.githubusercontent.com/vllm-project/vllm/main/examples/tool_chat_template_gemma4.jinja" \
+    -o chat_templates/tool_chat_template_gemma4.jinja
+echo "Downloaded chat_templates/tool_chat_template_gemma4.jinja"
+
 echo ""
 echo "Setup complete. Activate the venv with: source .venv/bin/activate"
 echo "Copy .env.example to .env and add your HF_TOKEN before running serve.sh"

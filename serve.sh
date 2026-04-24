@@ -17,20 +17,13 @@ fi
 source .env
 source .venv/bin/activate
 
-# Use vLLM's tool_chat_template_gemma4.jinja rather than the model's bundled
-# chat_template.jinja. The vLLM template adds the <|thinking|> and <|tool_call|>
-# token structures that --reasoning-parser gemma4 and --tool-call-parser gemma4 require.
-CHAT_TEMPLATE=$(python -c "
-import vllm, os
-base = os.path.dirname(vllm.__file__)
-p = os.path.join(base, 'entrypoints', 'chat_templates', 'tool_chat_template_gemma4.jinja')
-# Fallback: examples directory
-if not os.path.exists(p):
-    p = os.path.join(base, '..', 'examples', 'tool_chat_template_gemma4.jinja')
-print(os.path.abspath(p))
-")
+CHAT_TEMPLATE="$(pwd)/chat_templates/tool_chat_template_gemma4.jinja"
 
-echo "Using chat template: $CHAT_TEMPLATE"
+if [ ! -f "$CHAT_TEMPLATE" ]; then
+    echo "Error: $CHAT_TEMPLATE not found. Run bash setup.sh first." >&2
+    exit 1
+fi
+
 echo "Starting vLLM server for ${MODEL_ID:-RedHatAI/gemma-4-31B-it-FP8-block} ..."
 
 vllm serve "${MODEL_ID:-RedHatAI/gemma-4-31B-it-FP8-block}" \
