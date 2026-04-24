@@ -9,4 +9,5 @@ dependencies = [
     "pillow",
     "pymupdf",
     "httpx",
+    "jupyter",
 ]

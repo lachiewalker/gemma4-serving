@@ -43,7 +43,6 @@ response = client.chat.completions.create(
     messages=messages,
     tools=tools,
     max_tokens=8192,
-    extra_body={"chat_template_kwargs": {"enable_thinking": True}},
 )
 
 msg = response.choices[0].message
@@ -72,7 +71,7 @@ if msg.tool_calls:
         messages=messages,
         tools=tools,
         max_tokens=8192,
-        extra_body={"chat_template_kwargs": {"enable_thinking": True}},
+    
     )
 
     final = followup.choices[0].message

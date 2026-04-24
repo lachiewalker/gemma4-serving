@@ -17,7 +17,6 @@ response = client.chat.completions.create(
         }
     ],
     max_tokens=8192,
-    extra_body={"chat_template_kwargs": {"enable_thinking": True}},
 )
 
 message = response.choices[0].message
