@@ -37,7 +37,7 @@ response = client.chat.completions.create(
     model=MODEL_ID,
     messages=messages,
     tools=tools,
-    max_tokens=512,
+    max_tokens=8192,
 )
 
 assistant_msg = response.choices[0].message
@@ -64,7 +64,7 @@ if assistant_msg.tool_calls:
         model=MODEL_ID,
         messages=messages,
         tools=tools,
-        max_tokens=512,
+        max_tokens=8192,
     )
 
     print()

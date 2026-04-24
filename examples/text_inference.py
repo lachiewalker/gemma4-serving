@@ -9,7 +9,7 @@ response = client.chat.completions.create(
     messages=[
         {"role": "user", "content": "Explain the three laws of thermodynamics in plain English."},
     ],
-    max_tokens=512,
+    max_tokens=8192,
     temperature=0.7,
 )
 

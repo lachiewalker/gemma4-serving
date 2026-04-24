@@ -42,7 +42,7 @@ response = client.chat.completions.create(
     model=MODEL_ID,
     messages=messages,
     tools=tools,
-    max_tokens=4096,
+    max_tokens=8192,
     extra_body={"chat_template_kwargs": {"enable_thinking": True}},
 )
 
@@ -71,7 +71,7 @@ if msg.tool_calls:
         model=MODEL_ID,
         messages=messages,
         tools=tools,
-        max_tokens=1024,
+        max_tokens=8192,
         extra_body={"chat_template_kwargs": {"enable_thinking": True}},
     )
 

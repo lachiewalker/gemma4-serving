@@ -34,6 +34,7 @@ vllm serve "${MODEL_ID:-RedHatAI/gemma-4-31B-it-FP8-block}" \
     --reasoning-parser gemma4 \
     --tool-call-parser gemma4 \
     --chat-template "$CHAT_TEMPLATE" \
+    --max-num-batched-tokens 4096 \
     --limit-mm-per-prompt '{"image": 4, "audio": 0}' \
     --async-scheduling \
     --host 0.0.0.0 \
